@@ -1,13 +1,21 @@
 package com.cg.uas.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.commons.validator.routines.DateValidator;
 
 import com.cg.uas.dao.IMACDao;
 import com.cg.uas.dao.MACDaoImpl;
 import com.cg.uas.dto.ApplicationBean;
 import com.cg.uas.dto.ProgramScheduledBean;
 import com.cg.uas.exception.UniversityException;
+
 
 public class MACServiceImpl implements IMACService {
 	IMACDao MACdao = new MACDaoImpl();
@@ -45,5 +53,27 @@ public class MACServiceImpl implements IMACService {
 	@Override
 	public Boolean reject(Integer applicationId) throws UniversityException {
 		return MACdao.reject(applicationId);
+	}
+	
+
+	public boolean checkDateSyntax(String date) throws UniversityException {
+		String errorMessage = null;
+		Pattern datePattern = Pattern.compile("(0[1-9]|1[0-9]|2[0-9]|30|31])([-])(0[1-9]|10|11|12)([-])(2018|2019)");
+		Matcher dateMatcher = datePattern.matcher(date);
+		
+		if(!(dateMatcher.matches())) {
+			errorMessage = "Enter correct date format";
+		}
+		
+		if(!errorMessage.isEmpty()) {
+			throw new UniversityException(errorMessage);
+		}
+		else
+			return true;
+	}
+	
+	public boolean checkDateLogic(String date) throws UniversityException {
+		DateValidator validator = DateValidator.getInstance(); // Get the date validator
+		return validator.validate(date, Locale.ENGLISH) != null; // Validate the date
 	}
 }

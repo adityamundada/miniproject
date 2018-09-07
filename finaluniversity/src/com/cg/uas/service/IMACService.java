@@ -29,4 +29,11 @@ public interface IMACService {
 
 	/* Updates applicant's status as REJECTED (oops), given his/her application ID */
 	public Boolean reject(Integer applicationId) throws UniversityException;
+	
+	/* Checks if the entered interview date has a valid syntax */
+	public boolean checkDateSyntax(String date) throws UniversityException;
+	
+	/* Checks if the entered interview date has a valid logic. For example, 29-02-2018 is not valid as it is not a leap year */
+	public boolean checkDateLogic(String date) throws UniversityException;
+	
 }

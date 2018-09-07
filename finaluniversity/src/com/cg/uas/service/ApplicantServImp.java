@@ -19,7 +19,7 @@ public class ApplicantServImp implements IApplicantServ {
 		Pattern namePattern=Pattern.compile("^[A-Za-z\\s]{3,}$");
 		Matcher nameMatcher=namePattern.matcher(applicationBean.getName());
 		Pattern dobPattern=Pattern.compile("^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$");
-		Matcher dobMatcher=dobPattern.matcher(applicationBean.getDob());
+		Matcher dobMatcher=dobPattern.matcher(applicationBean.getDateOfBirth());
 		Pattern goalPattern=Pattern.compile("^[A-Za-z\\s]{1,}$");
 		Matcher goalMatcher=goalPattern.matcher(applicationBean.getGoals());
 		Pattern marksPattern=Pattern.compile("^[1-9][0-9]?$|^100$");
