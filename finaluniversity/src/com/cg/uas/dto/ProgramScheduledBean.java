@@ -7,93 +7,55 @@ public class ProgramScheduledBean {
 	private String scheduledProgramID;
 	private String programName;
 	private String location;
-	private String startDate;
-	private String endDate;
-	private String sessionsPerWeek;
-	
-	
+	private Date startDate;
+	private Date endDate;
+	private Integer sessionsPerWeek;
 	
 	public String getScheduledProgramID() {
 		return scheduledProgramID;
 	}
-
-
-
+	
 	public void setScheduledProgramID(String scheduledProgramID) {
 		this.scheduledProgramID = scheduledProgramID;
 	}
-
-
-
+	
 	public String getProgramName() {
 		return programName;
 	}
-
-
-
+	
 	public void setProgramName(String programName) {
 		this.programName = programName;
 	}
-
-
-
+	
 	public String getLocation() {
 		return location;
 	}
-
-
-
+	
 	public void setLocation(String location) {
 		this.location = location;
 	}
-
-
-
-	public String getStartDate() {
+	
+	public Date getStartDate() {
 		return startDate;
 	}
-
-
-
-	public void setStartDate(String startDate) {
+	
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-
-
-
-	public String getEndDate() {
+	
+	public Date getEndDate() {
 		return endDate;
 	}
-
-
-
-	public void setEndDate(String endDate) {
+	
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-
-
-
-	public String getSessionsPerWeek() {
+	
+	public Integer getSessionsPerWeek() {
 		return sessionsPerWeek;
 	}
 
-
-
-	public void setSessionsPerWeek(String sessionsPerWeek) {
+	public void setSessionsPerWeek(Integer sessionsPerWeek) {
 		this.sessionsPerWeek = sessionsPerWeek;
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "ProgramScheduledBean [scheduledProgramID=" + scheduledProgramID
-				+ ", programName=" + programName + ", location=" + location
-				+ ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", sessionsPerWeek=" + sessionsPerWeek + "]";
-	}
-	
-	
-	
-	
+	}	
 }

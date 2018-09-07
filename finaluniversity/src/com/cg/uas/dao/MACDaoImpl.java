@@ -42,9 +42,9 @@ public class MACDaoImpl implements IMACDao {
 				programScheduled.setScheduledProgramID(resultSet.getString(1));
 				programScheduled.setProgramName(resultSet.getString(2));
 				programScheduled.setLocation(resultSet.getString(3));
-				programScheduled.setStartDate(resultSet.getString(4));
-				programScheduled.setEndDate(resultSet.getString(5));
-				programScheduled.setSessionsPerWeek(resultSet.getString(6));
+				programScheduled.setStartDate(resultSet.getDate(4));
+				programScheduled.setEndDate(resultSet.getDate(5));
+				programScheduled.setSessionsPerWeek(resultSet.getInteger(6));
 				
 				programScheduledList.add(programScheduled);
 				programCount++;

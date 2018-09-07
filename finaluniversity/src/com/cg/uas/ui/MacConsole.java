@@ -12,6 +12,7 @@ public class MacConsole {
 			scanner = new Scanner(System.in);
 			
 			System.out.println("--------------Welcome to Capgemini University MAC Portal--------------");
+			System.out.println("\n");
 			System.out.println("1. Scheduled programs details");
 			System.out.println("2. Update applicant status");			
 			System.out.println("3. Logout");
