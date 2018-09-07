@@ -16,17 +16,17 @@ public interface IMACDao {
 	public List<ApplicationBean> viewApplicant(String scheduledProgramId) throws UniversityException;
 	
 	/* Updates applicant's status as ACCEPTED, given his/her application ID */
-	public ApplicationBean accept(Integer applicationId) throws UniversityException;
+	public Boolean accept(Integer applicationId) throws UniversityException;
 
 	/* Retrieves a list of students with status as ACCEPTED and given scheduled program ID */
-	public List<ApplicationBean> confirmedApplicants(String scheduledProgramId) throws UniversityException;
+	public List<ApplicationBean> acceptedApplicants(String scheduledProgramId) throws UniversityException;
 	
 	/* Sets applicant's date of interview, given his/her application ID */
-	public ApplicationBean interview(Integer applicationId, Date date) throws UniversityException;
+	public Boolean interview(Integer applicationId, Date date) throws UniversityException;
 
 	/* Updates applicant's status as CONFIRMED (yay!), given his/her application ID */
-	public ApplicationBean confirm(Integer applicationId) throws UniversityException;
+	public Boolean confirm(Integer applicationId) throws UniversityException;
 
 	/* Updates applicant's status as REJECTED (oops), given his/her application ID */
-	public ApplicationBean reject(Integer applicationId) throws UniversityException;
+	public Boolean reject(Integer applicationId) throws UniversityException;
 }

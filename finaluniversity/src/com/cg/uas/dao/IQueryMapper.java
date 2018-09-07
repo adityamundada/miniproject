@@ -32,13 +32,13 @@ public interface IQueryMapper {
 	
 	///MAC(intosh)
 	
-	public static final String RETRIEVE_SCHEDULED_PROGRAMS = "SELECT psb FROM ProgramScheduledBean psb";
-	public static final String RETRIEVE_APPLICANTS = "SELECT ab from ApplicationBean ab WHERE ab.scheduledProgramID = ?1";
-	public static final String SET_STATUS_ACCEPT = "UPDATE ApplicationBean SET status = 'accepted' WHERE applicationID = ?1";
-	public static final String RETRIEVE_APPLICANTS_STATUS_ACCEPTED = "SELECT ab from ApplicationBean ab where ab.scheduledProgramID = ?1 AND ab.status='accepted'";
-	public static final String SET_INTERVIEW_DATE = "UPDATE ApplicationBean SET doi = ?1 WHERE applicationID = ?2";
-	public static final String SET_STATUS_CONFIRMED = "UPDATE  ApplicationBean SET status = 'confirmed' WHERE applicationID = ?1";
-	public static final String SET_STATUS_REJECT = "UPDATE ApplicationBean SET status = 'rejected' WHERE applicationID = ?1";
+	public static final String RETRIEVE_SCHEDULED_PROGRAMS = "SELECT * FROM Programs_Scheduled";
+	public static final String RETRIEVE_APPLICANTS = "SELECT * FROM Application WHERE Scheduled_program_id = ?1";
+	public static final String SET_STATUS_ACCEPT = "UPDATE Application SET status = 'accepted' WHERE Application_id = ?1";
+	public static final String RETRIEVE_APPLICANTS_STATUS_ACCEPTED = "SELECT * from Application where Scheduled_program_id = ?1 AND astatus='accepted'";
+	public static final String SET_INTERVIEW_DATE = "UPDATE Application SET Date_Of_Interview = ?1 WHERE Application_id = ?2";
+	public static final String SET_STATUS_CONFIRMED = "UPDATE  Application SET status = 'confirmed' WHERE Application_id = ?1";
+	public static final String SET_STATUS_REJECT = "UPDATE Application SET status = 'rejected' WHERE Application_id = ?1";
 	
 	
 	

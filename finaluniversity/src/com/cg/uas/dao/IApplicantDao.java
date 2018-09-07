@@ -1,6 +1,5 @@
 package com.cg.uas.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.cg.uas.dto.ApplicationBean;

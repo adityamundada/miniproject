@@ -23,27 +23,27 @@ public class MACServiceImpl implements IMACService {
 	}
 	
 	@Override
-	public ApplicationBean accept(Integer applicationId) throws UniversityException {
+	public Boolean accept(Integer applicationId) throws UniversityException {
 		return MACdao.accept(applicationId);
 	}
 	
 	@Override
-	public List<ApplicationBean> confirmedApplicants(String scheduledProgramId) throws UniversityException {
-		return MACdao.confirmedApplicants(scheduledProgramId);
+	public List<ApplicationBean> acceptedApplicants(String scheduledProgramId) throws UniversityException {
+		return MACdao.acceptedApplicants(scheduledProgramId);
 	}
 	
 	@Override
-	public ApplicationBean interview(Integer applicationId, Date date) throws UniversityException {
+	public Boolean interview(Integer applicationId, Date date) throws UniversityException {
 		return MACdao.interview(applicationId, date);
 	}
 	
 	@Override
-	public ApplicationBean confirm(Integer applicationId) throws UniversityException {
+	public Boolean confirm(Integer applicationId) throws UniversityException {
 		return MACdao.confirm(applicationId);
 	}
 	
 	@Override
-	public ApplicationBean reject(Integer applicationId) throws UniversityException {
+	public Boolean reject(Integer applicationId) throws UniversityException {
 		return MACdao.reject(applicationId);
 	}
 }
