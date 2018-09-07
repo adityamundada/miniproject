@@ -11,7 +11,7 @@ import com.cg.uas.dto.ApplicationBean;
 import com.cg.uas.dto.ProgramScheduledBean;
 import com.cg.uas.exception.UniversityException;
 
-public class ApplicantServImp implements IApplicantServ {
+public class ApplicantServiceImpl implements IApplicantService {
 	IApplicantDao dao=new ApplicantDaoImp();
 	@Override
 	public Boolean isValidApplication(ApplicationBean applicationBean) {

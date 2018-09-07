@@ -6,27 +6,19 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
-
-
-
-
-import com.cg.studentapp.bean.StudentBean;
-import com.cg.studentapp.exception.StudentException;
 import com.cg.uas.dto.ApplicationBean;
 import com.cg.uas.dto.ProgramScheduledBean;
 import com.cg.uas.exception.UniversityException;
 import com.cg.uas.service.IMACService;
 import com.cg.uas.service.MACServiceImpl;
-import com.sun.scenario.effect.impl.prism.PrTexture;
 
 public class MacConsole {
 	
 	private static Scanner scanner;
 	
-	void start() throws UniversityException {
+	public static void start() throws UniversityException {
 		String choice;
 		Integer option;
 		IMACService iMacService = new MACServiceImpl();
@@ -35,7 +27,7 @@ public class MacConsole {
 			System.out.println("--------------Welcome to Capgemini University MAC Portal--------------");
 			System.out.println("\n");
 			System.out.println("1. Scheduled programs details");
-			System.out.println("2. Update applicant status");
+			System.out.println("2. Update applicant status after conducting interview");
 			System.out.println("3. Logout");
 			System.out.println("----------------------------------------------------------------------");
 			System.out.println("\nEnter your choice");
@@ -93,47 +85,48 @@ public class MacConsole {
 										System.out.println("Could not enter interview date");	
 									}
 								}
-								catch (ParseException e | UniversityException e) {
+								catch (ParseException | UniversityException e) {
 									throw new UniversityException(e.getMessage());
 								}
 							}	
 							else {
 									System.out.println("Applicant not found!");
 							}
-							
+							break;
 						case 2:
 							Boolean rejectFlag = iMacService.reject(applicantId);
 							if(rejectFlag) {
-								System.out.println("~~~~~ Applicant rejected successfully :D!~~~~~");
-						
-							} else {
-										System.out.println("Applicant not found!");
-									}
-						}
-						}//end of if block
-					}//end of try
-				 catch (UniversityException e2) {
+								System.out.println("~~~~~ Applicant rejected successfully ~~~~~");
+							} 
+							else {
+								System.out.println("Applicant not found!");
+							}
+							break;
+					}
+				}
+				catch (UniversityException e2) {
 					System.err.println("Error in fetching program");
 				}
 				break;
 			case 2:
-				System.out.println("Enter Application ID for which you want to confirm/reject status::");
-				int applicationId= scanner.nextInt();
-				System.out.println("Enter 1 for Confirm\n 2 for Reject");
-				int flag = scanner.nextInt();
-				switch (flag)
-				{
-				case 1: 
-					iMacService.confirm(applicationId);
-					System.out.println("Applicant confirmed successfully!");
-					break;
-					
-				case 2: 
-					iMacService.reject(applicationId);
-					System.out.println("Applicant rejected successfully!");
-					break;
-				default: 
-					System.out.println("Enter valid option!");
+				System.out.println("Enter Application ID for which you want to confirm/reject status: ");
+				String applicationIdString = scanner.nextLine();
+				Integer applicationId = Integer.parseInt(applicationIdString);
+				System.out.println("\n1. Confirm");
+				System.out.println("\n2. Reject");
+				String choice3 = scanner.nextLine();
+				Integer option3 = Integer.parseInt(choice3);
+				switch(option3) {
+					case 1: 
+						iMacService.confirm(applicationId);
+						System.out.println("Applicant confirmed successfully!");
+						break;
+					case 2: 
+						iMacService.reject(applicationId);
+						System.out.println("Applicant rejected successfully!");
+						break;
+					default: 
+						System.out.println("Enter valid option!");
 				}
 				break;
 			case 3:
@@ -141,17 +134,11 @@ public class MacConsole {
 				break;
 			default:
 				System.out.println("Please enter the correct option");
-			}//end of switch case
-			
-			
-		
-		
-			
-		
-	}while (option != 3);
-  }
+			}
+		} while (option != 3);
+	}
 	
-	void printScheduledPrograms(List<ProgramScheduledBean> programScheduledList) {
+	static void printScheduledPrograms(List<ProgramScheduledBean> programScheduledList) {
 		for(ProgramScheduledBean psb : programScheduledList) {
 			System.out.println("\nScheduled Program ID: " + psb.getScheduledProgramID()
 								+ "\nProgram Name: " + psb.getProgramName()
@@ -162,7 +149,7 @@ public class MacConsole {
 		}
 	}
 	
-	void printApplicantDetails(List<ApplicationBean> applicantList) {
+	static void printApplicantDetails(List<ApplicationBean> applicantList) {
 		for (ApplicationBean applicationBean : applicantList) {
 			System.out.println("\nApplication ID: " + applicationBean.getApplicationID()
 								+ "\nFull Name: " + applicationBean.getFullName()

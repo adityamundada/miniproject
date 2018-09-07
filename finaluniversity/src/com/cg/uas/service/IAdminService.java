@@ -17,13 +17,9 @@ public interface IAdminService {
 	
 	public List<ProgramOfferedBean> viewProgramOffered() throws UniversityException;
 	
-	
-	
-	
-	
-	
-
 	public String addSchedule(ProgramScheduledBean programScheBean) throws UniversityException;
+	
 	public int deleteSchedule(String scheduleId) throws UniversityException;
+	
 	public ArrayList<ProgramScheduledBean> viewSchedule(String startDate,String endDate) throws UniversityException;
 }
